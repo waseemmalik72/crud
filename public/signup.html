@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application</title>
+    <link rel="stylesheet" href="./Css/style.css">
+
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="container">
+            <div class="signup-container">
+                <div class="signup-header">
+                    <div class="btn-section">
+                        <button class="both-btn l-btn"><a href="./signin.html">Login</a></button>
+                        <button class="both-btn s-btn" id="s-btn"><a href="#">Signup</a></button>
+                    </div>
+                </div>
+                <div class="signup-body">
+                    <h1 class="signup-heading">Sign up</h1>
+                    <div class="signup-form">
+                        <form id="signup-form">
+                            <div class="s-email">
+                                <label for="s-fname">Your Firsname</label>
+                                <input type="text" id="s-fname" placeholder="your First Name" required>
+                            </div>
+                            <div class="s-email">
+                                <label for="s-lname">Your Lastname</label>
+                                <input type="text" id="s-lname" placeholder="your Last Name" required>
+                            </div>
+                            <div class="s-email">
+                                <label for="s-email">Your email</label>
+                                <input type="email" id="s-email" placeholder="yourname@example.com" required>
+                            </div>
+                            <div class="s-email">
+                                <label for="s-pass">Your password *</label>
+                                <input type="password" id="s-pass" required>
+                            </div>
+                            <div class="s-pass">
+                                <label for="s-cpass">Your password *</label>
+                                <input type="password" id="s-cpass" required>
+                            </div>
+                    </div>
+                    <div class="error-para">
+
+                    </div>
+                    <div class="submit-btn">
+                        <button type="submit" class="submit">Submit</button>
+                    </div>
+                    </form>
+                    <div class="link">
+                        <p class="para">Already Have an account? <a href="./signin.html">Login</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+    <script type="module">
+
+        const signupForm = document.getElementById('signup-form');
+        signupForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const fname = document.getElementById('s-fname').value;
+            const lname = document.getElementById('s-lname').value;
+            const email = document.getElementById('s-email').value;
+            const pass = document.getElementById('s-pass').value;
+            const cpass = document.getElementById('s-cpass').value;
+
+            try {
+                if (pass === cpass) {
+
+                    await axios.post('api/v1/signup', {
+                        firstName: fname,
+                        lastName: lname,
+                        email: email,
+                        password: pass,
+                    })
+
+                        .then((res) => {
+                            console.log(res);
+                            location.replace('./signin.html');
+                        })
+
+                        .catch((err) => {
+                            console.log(RangeError)
+                        })
+                }
+                else {
+                    document.querySelector('.error-para').innerHTML = 'Passwords do not match';
+                }
+
+            }
+            catch (err) {
+                console.log(err);
+            }
+
+
+        })
+
+    </script>
+</body>
+
+</html>

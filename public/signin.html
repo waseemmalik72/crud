@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application</title>
+    <link rel="stylesheet" href="./Css/style.css">
+
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="container">
+            <div class="signup-container">
+                <div class="signup-header">
+                    <div class="btn-section">
+                        <button class="both-btn l-btn"><a href="#">Login</a></button>
+                        <button class="both-btn s-btn" id="s-btn"><a href="./signup.html">Signup</a></button>
+                    </div>
+                </div>
+                <div class="signup-body">
+                    <h1 class="signup-heading">Login</h1>
+                    <div class="signup-form">
+                        <div class="s-email">
+                            <label for="s-email">Your email</label>
+                            <input type="email" id="s-email" placeholder="yourname@example.com">
+                        </div>
+                        <div class="s-pass">
+                            <label for="s-email">Your password *</label>
+                            <input type="password" id="s-pass">
+                        </div>
+                    </div>
+                    <div class="error-para">
+
+                    </div>
+                    <div class="submit-btn">
+                        <button class="submit">Submit</button>
+                    </div>
+                    <div class="link">
+                        <p class="para">Don't Have an account? <a href="./signup.html">Signup</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script type="module">
+        const signupBtn = document.querySelector('.submit');
+        signupBtn.addEventListener('click', async () => {
+            const email = document.getElementById('s-email').value;
+            const password = document.getElementById('s-pass').value;
+            try {
+                const res = await axios.post('api/v1/login', {
+                    email: email,
+                    password: password,
+                })
+
+                if (res.status === 200) {
+                    location.replace("./index.html");
+                }
+                else {
+                }
+
+            }
+            catch (err) {
+
+                const error = document.querySelector('.error-para');
+                error.innerHTML = err.response.data.message;
+            }
+        });
+    </script>
+
+</body>
+
+</html>

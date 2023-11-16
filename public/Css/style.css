@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;1,300;1,500;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+    background-color: #ebebeb;
+}
+
+.container {
+    height: 100%;
+}
+
+.signup-container {
+    height: 100%;
+    width: 26%;
+    margin: auto;
+    position: relative;
+    top: 2rem;
+    background-color: #ffffff;
+    box-shadow: 10px 10px 10px #1e18188c;
+}
+
+.signup-header {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    padding: 10px 10px 0 0;
+    margin: auto;
+    border-bottom: 2px solid #e7ecf1;
+    padding-bottom: 10px;
+}
+
+.both-btn {
+    font-size: 16px;
+    color: #000000c4;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.l-btn {
+    margin-right: 5px;
+}
+
+.l-btn:hover {
+    padding: 9px 12px;
+    border: 2px solid #e7ecf1;
+    cursor: pointer;
+}
+
+.s-btn {
+    padding: 9px 12px;
+    background: none;
+    border: 2px solid #e7ecf1;
+    cursor: pointer;
+    margin-right: 3px;
+}
+
+#s-btn>a,
+.l-btn>a {
+    color: #000000c4;
+    text-decoration: none;
+}
+
+.signup-body {
+    width: 74%;
+    margin: auto;
+    margin-top: 12%;
+}
+
+.signup-heading {
+    margin-bottom: 7%;
+    display: flex;
+    justify-content: center;
+}
+
+.s-email,
+.s-pass {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    color: #000000c4;
+}
+
+#s-email,
+#s-pass,
+#s-fname,
+#s-lname,
+#s-cpass {
+    border: none;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e7ecf1;
+    padding-bottom: 10px;
+    margin-top: 6px;
+    font-size: 14px;
+    color: #000000c4;
+}
+
+#s-email,
+#s-pass,
+#s-fname,
+#s-lname,
+#s-cpass:focus {
+    outline: none;
+}
+
+.error-para {
+    width: 90%;
+    margin: auto;
+    padding: 10px 0;
+    color: red;
+}
+
+.submit-btn {
+    display: flex;
+    flex-direction: column;
+}
+
+.submit {
+    background: #8bb14f;
+    border: none;
+    font-size: 18px;
+    color: white;
+    padding: 14px 0;
+    font-weight: 700;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background-color: #70a719;
+}
+
+.link {
+    display: flex;
+    justify-content: center;
+}
+
+.link .para {
+    color: #000000c4;
+    padding-bottom: 2rem;
+}
+
+.para>a {
+    margin-left: 2px;
+    text-decoration: none;
+    color: #5f9b00;
+}
+
+.para>a:hover {
+    color: #70a719;
+}

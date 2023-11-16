@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crud Operation in Express</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+
+<body onload="getAllPost()">
+  <div class="main-container hellog">
+    <div class="container">
+      <h1 class="h-primary">My First Crud Application</h1>
+      <form onsubmit="createData(); return false">
+        <div class="form-title">
+          <label for="title">Title</label>
+          <input type="text" name="title" id="title" placeholder="Type title" />
+        </div>
+        <div class="form-text">
+          <label for="text">text</label>
+          <input type="text" name="text" id="text" placeholder="Type text" />
+        </div>
+        <button type="submit" class="form-btn">Submit</button>
+      </form>
+      <div class="result"></div>
+      <div class="post-data"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="app.js"></script>
+  <script type="module">
+
+    
+    window.createData = () => {
+      let title = document.getElementById("title").value;
+      let text = document.getElementById("text").value;
+
+      axios.post("api/v1/post", {
+        title: title,
+        text: text,
+      })
+        .then((res) => {
+          console.log(res.data);
+
+          document.querySelector(".result").innerHTML = res.data;
+          getAllPost();
+        })
+        .catch((err) => {
+          console.log(err.response.data);
+        });
+    };
+
+    window.getAllPost = () => {
+
+      let postText = ``;
+      axios.get("api/v1/post")
+        .then((res) => {
+          res.data.map((eachPost) => {
+            postText += `<div id='card-${eachPost._id}' class="post-div"> <div> <h2 class="h-secondary"> ${eachPost.title} </h2></div> 
+                    <div> <p class="post-text"> ${eachPost.text} </p> </div>
+                    <button class="del-btn" onclick="delPost('${eachPost._id}')">Delete</button> <button class="edit-btn" onclick="editPost('${eachPost._id}', '${eachPost.title}', '${eachPost.text}')">Edit</button> </div>`;
+          });
+          document.querySelector(".post-data").innerHTML = postText;
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+          if(err.response.status === 401) {
+            location.replace("./signup.html")
+          }
+        });
+    };
+
+    window.delPost = (postId) => {
+      axios.delete(`api/v1/post/${postId}`)
+        .then((res) => {
+          console.log(res.data);
+          getAllPost();
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+          document.querySelector(".result").innerHTML =
+            "error in post submission";
+        });
+    };
+
+    window.editPost = (postId, title, text) => {
+      let editPost = `<div><input class="update-title" type="text" value='${title}' id='title-${postId}' placeholder="Update title"></div>
+           <div> <input class="update-text" type="text" value='${text}' id='text-${postId}' placeholder="Update text"></div>
+           <button class="save-btn" onclick="saveBtn('${postId}')">Save </button>`;
+
+      document.querySelector(`#card-${postId}`).innerHTML = editPost;
+    };
+
+    window.saveBtn = (postId) => {
+
+      let updateTitle = document.querySelector(`#title-${postId}`).value;
+      let updateText = document.querySelector(`#text-${postId}`).value;
+
+      axios.put(`api/v1/post/${postId}`, {
+        title: updateTitle,
+        text: updateText,
+      })
+        .then((res) => {
+          console.log(res.data);
+          getAllPost();
+        })
+
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+          document.querySelector(".result").innerHTML =
+            "error in post submission";
+        });
+    };
+
+
+  </script>
+</body>
+
+</html>
