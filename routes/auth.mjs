@@ -1,7 +1,7 @@
 import express from "express";
 import { client } from "../mongodb.mjs";
 import jwt from "jsonwebtoken";
-import { stringToHash, verifyHash, validateHash } from "bcrypt-inzi";
+import { stringToHash, varifyHash, validateHash } from "bcrypt-inzi";
 import { ObjectId } from "mongodb";
 
 const col = client.db("Cruddb").collection("user");
@@ -80,7 +80,7 @@ router.post("/login", async (req, res, next) => {
       });
       return;
     } else {
-      let matchPassword = await verifyHash(req.body.password, result.password);
+      let matchPassword = await varify(req.body.password, result.password);
 
       if (matchPassword) {
         const token = jwt.sign(
