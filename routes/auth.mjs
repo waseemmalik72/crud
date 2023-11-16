@@ -80,7 +80,7 @@ router.post("/login", async (req, res, next) => {
       });
       return;
     } else {
-      let matchPassword = await varify(req.body.password, result.password);
+      let matchPassword = await varifyHash(req.body.password, result.password);
 
       if (matchPassword) {
         const token = jwt.sign(
