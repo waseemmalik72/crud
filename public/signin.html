@@ -16,19 +16,19 @@
             <div class="signup-container">
                 <div class="signup-header">
                     <div class="btn-section">
-                        <button class="both-btn l-btn"><a href="#">Login</a></button>
-                        <button class="both-btn s-btn" id="s-btn"><a href="./signup.html">Signup</a></button>
+                        <button class="both-btn" id="l-btn"><a href="#">Login</a></button>
+                        <button class="both-btn" id="s-btn"><a href="./signup.html">Signup</a></button>
                     </div>
                 </div>
                 <div class="signup-body">
                     <h1 class="signup-heading">Login</h1>
                     <div class="signup-form">
                         <div class="s-email">
-                            <label for="s-email">Your email</label>
-                            <input type="email" id="s-email" placeholder="yourname@example.com">
+                            <label for="s-email">EMAIL ADDRESS</label>
+                            <input type="email" id="s-email">
                         </div>
                         <div class="s-pass">
-                            <label for="s-email">Your password *</label>
+                            <label for="s-email">PASSWORD</label>
                             <input type="password" id="s-pass">
                         </div>
                     </div>
@@ -48,7 +48,6 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
     <script type="module">
         const signupBtn = document.querySelector('.submit');
         signupBtn.addEventListener('click', async () => {
@@ -59,9 +58,9 @@
                     email: email,
                     password: password,
                 })
-
                 if (res.status === 200) {
                     location.replace("./index.html");
+
                 }
                 else {
                 }

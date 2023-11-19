@@ -41,17 +41,24 @@ body {
     background: none;
     border: none;
     cursor: pointer;
+    height: 2rem;
+    width: 4rem;
 }
 
-.l-btn {
+.both-btn:hover {
+    border: 1.5px solid gray;
+
+}
+
+/* .l-btn {
     margin-right: 5px;
-}
+} */
 
-.l-btn:hover {
+/* .l-btn:hover {
     padding: 9px 12px;
     border: 2px solid #e7ecf1;
     cursor: pointer;
-}
+} */
 
 .s-btn {
     padding: 9px 12px;
@@ -62,7 +69,7 @@ body {
 }
 
 #s-btn>a,
-.l-btn>a {
+#l-btn>a {
     color: #000000c4;
     text-decoration: none;
 }
@@ -70,7 +77,7 @@ body {
 .signup-body {
     width: 74%;
     margin: auto;
-    margin-top: 12%;
+    margin-top: 7%;
 }
 
 .signup-heading {

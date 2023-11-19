@@ -16,8 +16,8 @@
             <div class="signup-container">
                 <div class="signup-header">
                     <div class="btn-section">
-                        <button class="both-btn l-btn"><a href="./signin.html">Login</a></button>
-                        <button class="both-btn s-btn" id="s-btn"><a href="#">Signup</a></button>
+                        <button class="both-btn" id="l-btn"><a href="./signin.html">Login</a></button>
+                        <button class="both-btn" id="s-btn"><a href="#">Signup</a></button>
                     </div>
                 </div>
                 <div class="signup-body">
@@ -25,23 +25,23 @@
                     <div class="signup-form">
                         <form id="signup-form">
                             <div class="s-email">
-                                <label for="s-fname">Your Firsname</label>
-                                <input type="text" id="s-fname" placeholder="your First Name" required>
+                                <label for="s-fname">FIRST NAME</label>
+                                <input type="text" id="s-fname" required>
                             </div>
                             <div class="s-email">
-                                <label for="s-lname">Your Lastname</label>
-                                <input type="text" id="s-lname" placeholder="your Last Name" required>
+                                <label for="s-lname">LAST NAME</label>
+                                <input type="text" id="s-lname" required>
                             </div>
                             <div class="s-email">
-                                <label for="s-email">Your email</label>
-                                <input type="email" id="s-email" placeholder="yourname@example.com" required>
+                                <label for="s-email">EMAIL ADDRESS</label>
+                                <input type="email" id="s-email" required>
                             </div>
                             <div class="s-email">
-                                <label for="s-pass">Your password *</label>
+                                <label for="s-pass">PASSWORD</label>
                                 <input type="password" id="s-pass" required>
                             </div>
                             <div class="s-pass">
-                                <label for="s-cpass">Repeat password *</label>
+                                <label for="s-cpass">CONFIRM PASSWORD</label>
                                 <input type="password" id="s-cpass" required>
                             </div>
                     </div>
@@ -61,8 +61,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-
     <script type="module">
 
         const signupForm = document.getElementById('signup-form');
