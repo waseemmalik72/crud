@@ -23,20 +23,22 @@
                 <div class="signup-body">
                     <h1 class="signup-heading">Login</h1>
                     <div class="signup-form">
-                        <div class="s-email">
-                            <label for="s-email">EMAIL ADDRESS</label>
-                            <input type="email" id="s-email">
-                        </div>
-                        <div class="s-pass">
-                            <label for="s-email">PASSWORD</label>
-                            <input type="password" id="s-pass">
-                        </div>
-                    </div>
-                    <div class="error-para">
+                        <form id="signin-form">
+                            <div class="s-email">
+                                <label for="s-email">EMAIL ADDRESS</label>
+                                <input type="email" id="s-email">
+                            </div>
+                            <div class="s-pass">
+                                <label for="s-email">PASSWORD</label>
+                                <input type="password" id="s-pass">
+                            </div>
+                            <div class="error-para">
 
-                    </div>
-                    <div class="submit-btn">
-                        <button class="submit">Submit</button>
+                            </div>
+                            <div class="submit-btn">
+                                <button type="submit" class="submit">Submit</button>
+                            </div>
+                        </form>
                     </div>
                     <div class="link">
                         <p class="para">Don't Have an account? <a href="./signup.html">Signup</a></p>
@@ -49,8 +51,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module">
-        const signupBtn = document.querySelector('.submit');
-        signupBtn.addEventListener('click', async () => {
+        const signInBtn = document.querySelector('#signin-form');
+        signInBtn.addEventListener('submit', async (e) => {
+            e.preventDefault();
             const email = document.getElementById('s-email').value;
             const password = document.getElementById('s-pass').value;
             try {

@@ -123,8 +123,10 @@ router.put("/post/:postId", async (req, res, next) => {
         },
       }
     );
-    if (update.upsertedId) {
+    console.log(update);
+    if (update.acknowledged) {
       res.send("your Data has been successfully Update");
+      return;
     } else {
       res.send("Your id is not correct");
     }

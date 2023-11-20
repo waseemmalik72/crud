@@ -164,3 +164,16 @@ label {
 .para>a:hover {
     color: #70a719;
 }
+
+@media screen and (max-width: 1050px) {
+    .signup-container {
+        width: 50%;
+    }
+
+}
+
+@media screen and (max-width: 850px) {
+    .signup-container {
+        width: 90%;
+    }
+}

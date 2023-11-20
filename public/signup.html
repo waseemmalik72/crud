@@ -44,14 +44,14 @@
                                 <label for="s-cpass">CONFIRM PASSWORD</label>
                                 <input type="password" id="s-cpass" required>
                             </div>
-                    </div>
-                    <div class="error-para">
+                            <div class="error-para">
 
+                            </div>
+                            <div class="submit-btn">
+                                <button type="submit" class="submit">Submit</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="submit-btn">
-                        <button type="submit" class="submit">Submit</button>
-                    </div>
-                    </form>
                     <div class="link">
                         <p class="para">Already Have an account? <a href="./signin.html">Login</a></p>
                     </div>
@@ -63,10 +63,10 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module">
 
-        const signupForm = document.getElementById('signup-form');
-        signupForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
+        const signUpForm = document.getElementById('signup-form');
 
+        signUpForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
             const fname = document.getElementById('s-fname').value;
             const lname = document.getElementById('s-lname').value;
             const email = document.getElementById('s-email').value;

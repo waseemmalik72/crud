@@ -14,7 +14,7 @@
   <div class="main-container hellog">
     <div class="container">
       <h1 class="h-primary">My First Crud Application</h1>
-      <form onsubmit="createData(); return false">
+      <form id="myForm" onsubmit="createData(); return false">
         <div class="form-title">
           <label for="title">Title</label>
           <input type="text" name="title" id="title" placeholder="Type title" />
@@ -34,10 +34,9 @@
   <script src="app.js"></script>
   <script type="module">
 
-    
     window.createData = () => {
-      let title = document.getElementById("title").value;
-      let text = document.getElementById("text").value;
+      let title = document.getElementById("title").value
+      let text = document.getElementById("text").value
 
       axios.post("api/v1/post", {
         title: title,
@@ -45,17 +44,22 @@
       })
         .then((res) => {
           console.log(res.data);
-
-          document.querySelector(".result").innerHTML = res.data;
+          let result = document.querySelector(".result");
+          result.innerHTML = res.data;
+          setTimeout(() => {
+            result.innerHTML = " ";
+          }, 2000);
           getAllPost();
+          document.getElementById("myForm").reset();
+
         })
         .catch((err) => {
           console.log(err.response.data);
+          location.replace("./signin.html");
         });
     };
 
     window.getAllPost = () => {
-
       let postText = ``;
       axios.get("api/v1/post")
         .then((res) => {
@@ -69,7 +73,7 @@
         })
         .catch((err) => {
           console.log(err);
-          if(err.response.status === 401) {
+          if (err.response.status === 401) {
             location.replace("./signup.html")
           }
         });
@@ -79,6 +83,11 @@
       axios.delete(`api/v1/post/${postId}`)
         .then((res) => {
           console.log(res.data);
+          let result = document.querySelector(".result");
+          result.innerHTML = res.data;
+          setTimeout(() => {
+            result.innerHTML = " ";
+          }, 2000);
           getAllPost();
         })
         .catch(function (error) {
@@ -86,6 +95,7 @@
           console.log(error);
           document.querySelector(".result").innerHTML =
             "error in post submission";
+          location.replace("./signin.html");
         });
     };
 
@@ -108,14 +118,20 @@
       })
         .then((res) => {
           console.log(res.data);
+          let result = document.querySelector(".result");
+          result.innerHTML = res.data;
+          setTimeout(() => {
+            result.innerHTML = " ";
+          }, 2000);
           getAllPost();
         })
-
         .catch(function (error) {
           // handle error
           console.log(error);
           document.querySelector(".result").innerHTML =
             "error in post submission";
+          location.replace("./signin.html");
+
         });
     };
 
