@@ -55,6 +55,12 @@
         })
         .catch((err) => {
           console.log(err.response.data);
+          let result = document.querySelector(".result");
+          result.innerHTML = res.data;
+          setTimeout(() => {
+            result.innerHTML = " ";
+          }, 2000);
+          getAllPost();
         });
     };
 
