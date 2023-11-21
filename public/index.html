@@ -45,7 +45,7 @@
         .then((res) => {
           console.log(res.data);
           let result = document.querySelector(".result");
-          result.innerHTML = res.data;
+          result.innerHTML = res.response.data;
           setTimeout(() => {
             result.innerHTML = " ";
           }, 2000);
