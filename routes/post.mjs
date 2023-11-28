@@ -27,7 +27,7 @@ router.post("/post", async (req, res, next) => {
     const p = await col.insertOne(posts);
     console.log(req.body);
     console.log(posts._id);
-    res.send("Post Created");
+    res.send("Post Created Successfully!");
   } catch (e) {
     console.log("error inserting mongodb: ", e);
     res.status(500).send("server error, please try later");
@@ -84,7 +84,7 @@ router.delete("/post/:postId", async (req, res, next) => {
     });
     if (deletePost.value) {
       console.log("deleteResponse: ", deletePost);
-      res.send("your data has been successfully deleted");
+      res.send("your data has been successfully deleted!");
     } else {
       res.send("post not found with id " + req.params.postId);
     }
@@ -125,7 +125,7 @@ router.put("/post/:postId", async (req, res, next) => {
     );
     console.log(update);
     if (update.acknowledged) {
-      res.send("your Data has been successfully Update");
+      res.send("your Data has been successfully Update!");
       return;
     } else {
       res.send("Your id is not correct");

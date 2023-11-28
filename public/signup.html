@@ -17,7 +17,7 @@
                 <div class="signup-header">
                     <div class="btn-section">
                         <button class="both-btn" id="l-btn"><a href="./signin.html">Login</a></button>
-                        <button class="both-btn" id="s-btn"><a href="#">Signup</a></button>
+                        <button class="both-btn" id="s-btn"> <a href="#">Signup</a></button>
                     </div>
                 </div>
                 <div class="signup-body">
@@ -84,12 +84,16 @@
                     })
 
                         .then((res) => {
-                            console.log(res);
-                            location.replace('./signin.html');
+                            console.log(res.data.message);
+                            document.querySelector('.error-para').innerHTML = res.data.message;
+                            document.getElementById('signup-form').reset();
+                            // location.replace('./signin.html');
                         })
 
                         .catch((err) => {
-                            console.log(RangeError)
+                            console.log(err)
+                            document.querySelector('.error-para').innerHTML = err.response.data.message;
+
                         })
                 }
                 else {

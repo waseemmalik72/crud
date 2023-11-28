@@ -12,13 +12,11 @@ app.use(cookieParser());
 
 import authRouter from "./routes/auth.mjs";
 import postRouter from "./routes/post.mjs";
-
-app.use("/api/v1", authRouter);
 app.use(express.static(path.join(__dirname, "public")));
+app.use("/api/v1", authRouter);
 
 app.use((req, res, next) => {
   const token = req.cookies.token;
-
   try {
     let decoded = jwt.verify(token, process.env.SECRET);
     console.log(decoded);

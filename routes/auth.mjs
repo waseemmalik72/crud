@@ -45,7 +45,7 @@ router.post("/signup", async (req, res, next) => {
       });
 
       console.log("inputUserData ", inputUserData);
-      res.send({ message: "your successfully Signup" });
+      res.send({ message: "you'r successfully Signup" });
       return;
     } else {
       res.status(403).send({
@@ -92,7 +92,7 @@ router.post("/login", async (req, res, next) => {
           },
           process.env.SECRET,
           {
-            expiresIn: 300,
+            expiresIn: "1hour",
           }
         );
         res.cookie("token", token, {
